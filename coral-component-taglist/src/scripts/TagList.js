@@ -72,9 +72,6 @@ class TagList extends BaseFormField(BaseComponent(HTMLElement)) {
     this._labellableElement = this;
   
     this._itemToFocusAfterDelete = null;
-
-    //track previously focused element before taglist
-    this._previouslyFocusElement = null;
   }
   
   /**
@@ -369,10 +366,6 @@ class TagList extends BaseFormField(BaseComponent(HTMLElement)) {
   /** @private */
   _onItemFocus(event) {
     if (!this.disabled) {
-      if (!this._previouslyFocusElement) {
-        this._previouslyFocusElement = event.relatedTarget;
-      }
-
       this.setAttribute('aria-live', 'polite');
       
       const tag = event.matchedTarget;
